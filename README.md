@@ -25,6 +25,7 @@ Please refer to the blog [Set up Hadoop 2.2 and HBase 0.96 part2](http://www.cya
 if there is error, please brew update, and reinstall
 
 5. generate thrift files
+
 ```sh
   $ thrift --gen js:node path-to-hbasesrc/hbase-0.96.1-src/hbase-thrift/src/main/resources/org/apache/hadoop/hbase/thrift2/Hbase.thrift
   # Then you will get gen-nodejs dir
@@ -32,18 +33,18 @@ if there is error, please brew update, and reinstall
 I have retained the gen-nodejs dir, if you have any problems in generating the dir, you can try this one.
 Please delete it before you generate a new one.
 
-6. npm install thrift
+6.npm install thrift
 
 
 Run Damos
 ====
-1. start hadoop, hbase, and hbase thrift2
+1.start hadoop, hbase, and hbase thrift2
 ```sh
   $ start-dfs.sh
   $ start-hbase.sh
   $ hbsae thrift2 start -f
 ```
-2. run get/put/delete/scan
+2.run get/put/delete/scan
 ```sh
   $ node thrift-get.js
   $ node thrift-put.js
