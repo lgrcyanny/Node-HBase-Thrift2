@@ -11,7 +11,7 @@ connection.on('connect', function () {
   console.log('connected');
   var client = thrift.createClient(HBase, connection);
 
-  // put 'users', 'wwzyhao', 'info', 'count', 1
+  // put 'users', 'wwzyhao', 'info:count', 1
   var tIncrement = new HBaseTypes.TIncrement({
     row:'wwzyhao',
     columns: [new HBaseTypes.TColumn({family: 'info', qualifier: 'count'})]
