@@ -11,28 +11,20 @@ connection.on('connect', function () {
   console.log('connected');
   var client = thrift.createClient(HBase, connection);
 
-  var tScanner = new HBaseTypes.TScan({startRow: 'TheRealMT',
-    columns: [new HBaseTypes.TColumn({family: 'info'})]});
-  client.openScanner('users', tScanner, function (err, scannerId) {
+  // put 'users', 'wwzyhao', 'info', 'count', 1
+  var tIncrement = new HBaseTypes.TIncrement({
+    row:'wwzyhao',
+    columns: [new HBaseTypes.TColumn({family: 'info', qualifier: 'count'})]
+  });
+  client.increment('users', tIncrement, function (err) {
     if (err) {
       console.log(err);
       return;
     }
-    console.log('scannerid : ' + scannerId);
-    client.getScannerRows(scannerId, 10, function (serr, data) {
-      if (serr) {
-        console.log(serr);
-        return;
-      }
-      console.log(data);
-    });
-    client.closeScanner(scannerId, function (err) {
-      if (err) {
-        console.log(err);
-      }
-    });
+    console.log('increment success.');
     connection.end();
   });
+
 });
 
 connection.on('error', function(err){

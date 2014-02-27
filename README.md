@@ -42,7 +42,7 @@ Run Damos
 ```sh
   $ start-dfs.sh
   $ start-hbase.sh
-  $ hbsae thrift2 start -f
+  $ hbsae thrift2 start -f # Use framed transport， This transport is required when using a non-blocking server. It sends data in frames, where each frame is preceded by length information.
 ```
 2.run get/put/delete/scan
 ```sh
@@ -63,6 +63,7 @@ References
 1. [Getting Started with HBase and Thrift for Node](http://dailyjs.com/2013/07/04/hbase/)
 2. HBase in Action
 3. [building-apache-thrift-on-mac-os-x](http://blog.evernote.com/tech/2012/12/20/building-apache-thrift-on-mac-os-x/)
+4. [Thrift API](https://wiki.apache.org/hadoop/Hbase/ThriftApi)
 
 
 
